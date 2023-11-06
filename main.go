@@ -47,7 +47,7 @@ func main() {
 func handleMessageEvent(bot *linebot.Client, event *linebot.Event) {
 	switch message := event.Message.(type) {
 	case *linebot.TextMessage:
-		responseText, err := askOpenAI("請依據冒號後面的語言將中文與印尼文互相轉換:" + message.Text)
+		responseText, err := askOpenAI("請依據等號後面的文字，如果是繁體中文就轉成印尼文，如果是印尼文就轉成繁體中文。不要有其他文字就輸出翻譯後的內容就好=" + message.Text)
 		if err != nil {
 			fmt.Println("askOpenAI() error:", err)
 			return
